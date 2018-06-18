@@ -63,12 +63,12 @@ export default class GygAssessmentApp extends Component {
     }
 
     render() {
-        const { tours } = this.state;
+        const { tours, searchTerm } = this.state;
 
         return (
             <main>
                 <SearchCriteria onChangeSearchTerm={this.setSearchTerm} />
-                <TourList tours={tours} />
+                <TourList tours={tours}searchTerm={searchTerm} />
             </main>
         );
     }

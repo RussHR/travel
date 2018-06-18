@@ -2,12 +2,13 @@
 import { shallow, render } from 'enzyme';
 import React from 'react';
 import { expect } from 'chai';
+import { merge } from 'lodash';
 
 import TourList from './TourList';
 import mockData from '../../data/mockData';
 
 describe('<TourList />', () => {
-    const props = JSON.parse(mockData);
+    const props = merge({}, JSON.parse(mockData), { searchTerm: '' });
 
     it('should render without any issues', () => {
         shallow(<TourList {...props} />);
@@ -30,5 +31,12 @@ describe('<TourList />', () => {
         expect(firstSpecialTourInList).to.contain('$41');
         expect(firstSpecialTourInList).to.contain('4.5');
         expect(firstSpecialTourInList).to.contain('special');
+    });
+
+    it('filters tours that match multiple words in the search terms (non-case-sensitive)', () => {
+        const mockProps = merge({}, props, { searchTerm: 'skip line' });
+        const wrapper = render(<TourList {...mockProps} />);
+        const tourListItems = wrapper.find('[data-qa="tour-list-item"]');
+        expect(tourListItems.length).to.eq(4);
     });
 });
