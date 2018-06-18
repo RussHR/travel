@@ -1,15 +1,21 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import { sortBy } from 'lodash';
+
 /**
  * Contains a list of tours.
  */
 const TourList = ({ tours }) => {
+
+    // by default, put the sorted tours at the top
+    const sortedTours = sortBy(tours, tour => !tour.isSpecialOffer);
+
     return (
         <section>
             <ul>
                 {/* Preferrably, an id would be used rather than index */}
-                {tours.map(({ title, price, currency, rating, isSpecialOffer }, i) => (
+                {sortedTours.map(({ title, price, currency, rating, isSpecialOffer }, i) => (
                     <li key={i} data-qa="tour-list-item">
                         {title}
                         {currency}{price}

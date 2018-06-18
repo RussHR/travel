@@ -16,8 +16,8 @@ describe('<TourList />', () => {
     it('renders the text for a given tour', () => {
         const wrapper = render(<TourList {...props} />);
 
-        const firstNonSpecialTourInList = wrapper.find('[data-qa="tour-list-item"]').first().text();
-        const firstSpecialTourInList = wrapper.find('[data-qa="tour-list-item"]').eq(7).text();
+        const firstNonSpecialTourInList = wrapper.find('[data-qa="tour-list-item"]').eq(3).text();
+        const firstSpecialTourInList = wrapper.find('[data-qa="tour-list-item"]').first().text();
 
         // check that the first non-special tour has the correct text
         expect(firstNonSpecialTourInList).to.contain('German Tour: Parliament Quarter &amp; Reichstag glass dome');
