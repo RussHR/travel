@@ -13,8 +13,11 @@ export default class GygAssessmentApp extends Component {
         super(props);
 
         this.state = {
-            tours: []
+            tours: [],
+            searchTerm: ''
         };
+
+        this.setSearchTerm = this.setSearchTerm.bind(this);
     }
 
     /*
@@ -22,6 +25,18 @@ export default class GygAssessmentApp extends Component {
      */
     componentDidMount() {
         this.fetchInitialData();
+    }
+
+    /*
+     * Sets the search term to filter by.
+     *
+     * @param {object} e - DOM event when text input is changed
+     * @param {object} e.currentTarget - input (search term) that the change occurs in
+     * @return {undefined}
+     */
+    setSearchTerm({ currentTarget }) {
+        const searchTerm = currentTarget.value;
+        this.setState(() => ({ searchTerm }));
     }
 
     /*
@@ -48,10 +63,12 @@ export default class GygAssessmentApp extends Component {
     }
 
     render() {
+        const { tours } = this.state;
+
         return (
             <main>
-                <SearchCriteria />
-                <TourList tours={this.state.tours} />
+                <SearchCriteria onChangeSearchTerm={this.setSearchTerm} />
+                <TourList tours={tours} />
             </main>
         );
     }
