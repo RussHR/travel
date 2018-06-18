@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 
 import mockData from './data/mockData';
 
+import SearchCriteria from './components/SearchCriteria';
 import TourList from './components/TourList';
 
 /**
@@ -49,6 +50,7 @@ export default class GygAssessmentApp extends Component {
     render() {
         return (
             <main>
+                <SearchCriteria />
                 <TourList tours={this.state.tours} />
             </main>
         );
