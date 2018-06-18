@@ -2,8 +2,10 @@ import React, { Component } from 'react';
 
 import mockData from './data/mockData';
 
+import TourList from './components/TourList';
+
 /**
- * Main app.
+ * Main app. Houses API logic.
  */
 export default class GygAssessmentApp extends Component {
     constructor(props) {
@@ -46,7 +48,9 @@ export default class GygAssessmentApp extends Component {
 
     render() {
         return (
-            <div>GygAssessmentApp</div>
+            <main>
+                <TourList tours={this.state.tours} />
+            </main>
         );
     }
 }
