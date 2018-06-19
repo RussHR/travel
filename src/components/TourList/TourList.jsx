@@ -7,13 +7,17 @@ import sortModes from '../../constants/sortModes';
 import { filterAndSortTours } from '../../helpers/tours';
 
 import TourListItem from './TourListItem';
+import ToursLoading from '../ToursLoading';
 
 import './tour_list.scss';
 
 /**
  * Contains a list of tours.
  */
-const TourList = ({ tours, searchTerm, sortMode }) => {
+const TourList = ({ tours, searchTerm, sortMode, fetchingInitialData }) => {
+    if (fetchingInitialData) {
+        return <ToursLoading />;
+    }
 
     const sortedTours = filterAndSortTours({ tours, searchTerm, sortMode });
 
@@ -44,7 +48,9 @@ TourList.propTypes = {
     /* Term to filter the tours by */
     searchTerm: PropTypes.string.isRequired,
     /* Whether to not sort, or to sort by price */
-    sortMode: PropTypes.oneOf(values(sortModes)).isRequired
+    sortMode: PropTypes.oneOf(values(sortModes)).isRequired,
+    /* Shows the Loading... message if the initial tours are being fetched */
+    fetchingInitialData: PropTypes.bool.isRequired
 };
 
 export default TourList;

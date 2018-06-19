@@ -9,7 +9,11 @@ import mockData from '../../data/mockData';
 import sortModes from '../../constants/sortModes';
 
 describe('<TourList />', () => {
-    const props = merge({}, JSON.parse(mockData), { searchTerm: '', sortMode: sortModes.recommended });
+    const props = merge({}, JSON.parse(mockData), {
+        searchTerm: '',
+        sortMode: sortModes.recommended,
+        fetchingInitialData: false
+    });
 
     it('should render without any issues', () => {
         shallow(<TourList {...props} />);
@@ -135,4 +139,9 @@ describe('<TourList />', () => {
         expect(wrapper.text()).to.contain('Sorry, there are no tours matching your search!');
     });
 
+    it('shows the user when it is initially fetching the tours', () => {
+        const mockProps = merge({}, props, { fetchingInitialData: true });
+        const wrapper = render(<TourList {...mockProps} />);
+        expect(wrapper.text()).to.contain('Loading...');
+    });
 });

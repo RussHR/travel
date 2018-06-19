@@ -5,7 +5,6 @@ import sortModes from './constants/sortModes';
 
 import SearchCriteria from './components/SearchCriteria';
 import TourList from './components/TourList';
-import ToursLoading from './components/ToursLoading';
 
 /**
  * Main app. Houses API logic.
@@ -80,16 +79,17 @@ export default class GygAssessmentApp extends Component {
     }
 
     render() {
-        if (this.state.fetchingInitialData) {
-            return <ToursLoading />;
-        }
-
-        const { tours, searchTerm, sortMode } = this.state;
+        const { tours, searchTerm, sortMode, fetchingInitialData } = this.state;
 
         return (
             <main>
                 <SearchCriteria onChangeSearchTerm={this.setSearchTerm} onChangeSortMode={this.setSortMode} />
-                <TourList tours={tours} searchTerm={searchTerm} sortMode={sortMode} />
+                <TourList
+                    tours={tours}
+                    searchTerm={searchTerm}
+                    sortMode={sortMode}
+                    fetchingInitialData={fetchingInitialData}
+                />
             </main>
         );
     }

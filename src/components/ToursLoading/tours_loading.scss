@@ -1,0 +1,22 @@
+@import '../../style/variables';
+
+.ToursLoading {
+    display: inline-block;
+    width: 100%;
+    font-size: 2rem;
+    text-align: center;
+}
+.ToursLoading__ring {
+    display: inline-block;
+    font-size: 5rem;
+    animation: spin 1.5s linear 0s infinite;
+}
+
+@keyframes spin {
+    from {
+        transform: rotate3d(0, 0, 1, 0deg);
+    }
+    to {
+        transform: rotate3d(0, 0, 1, 360deg);
+    }
+}
