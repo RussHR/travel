@@ -63,6 +63,7 @@ Honestly, I didn't add very many! This was very time-consuming unto itself. With
 * Better ensure acccessibility.
 * Update this project's version of webpack. I do not recommend this version for anything in production, especially due to security vulnerabilities of npm packages installed.
 * Try to understand the data.json's tour titles better. Some are a bit strange.
+* Add error handling.
 * Sleep! Exercise! Eat well.
 
 

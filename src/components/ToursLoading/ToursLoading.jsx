@@ -8,7 +8,7 @@ import './tours_loading.scss';
 const ToursLoading = () => {
     return (
         <span className="ToursLoading">
-            <span className="ToursLoading__ring">&#9676;</span><br />Loading...
+            <span className="ToursLoading__ring">[]</span><br />Loading...
         </span>
     );
 };
