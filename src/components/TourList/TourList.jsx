@@ -8,6 +8,8 @@ import { filterAndSortTours } from '../../helpers/tours';
 
 import TourListItem from './TourListItem';
 
+import './tour_list.scss';
+
 /**
  * Contains a list of tours.
  */
@@ -21,7 +23,7 @@ const TourList = ({ tours, searchTerm, sortMode }) => {
         tourListContents = <span>Sorry, there are no tours matching your search!</span>;
     } else {
         tourListContents = (
-            <ul>
+            <ul className="TourList__list">
                 {sortedTours.map((tour) => <TourListItem tour={tour} key={tour.title} />)}
             </ul>
         );

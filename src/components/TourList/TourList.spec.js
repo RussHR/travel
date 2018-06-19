@@ -22,16 +22,16 @@ describe('<TourList />', () => {
         const firstSpecialTourInList = wrapper.find('[data-qa="tour-list-item"]').first().text();
 
         // check that the first non-special tour has the correct text
-        expect(firstNonSpecialTourInList).to.contain('German Tour: Parliament Quarter &amp; Reichstag glass dome');
+        expect(firstNonSpecialTourInList).to.contain('German Tour: Parliament Quarter & Reichstag glass dome');
         expect(firstNonSpecialTourInList).to.contain('$14');
         expect(firstNonSpecialTourInList).to.contain('4.8');
-        expect(firstNonSpecialTourInList).to.not.contain('special');
+        expect(firstNonSpecialTourInList).to.not.contain('SPECIAL');
 
         // check that the first special tour has the correct text
         expect(firstSpecialTourInList).to.contain('Berlin: 2.5-Hour Boat Tour Along the River Spree');
         expect(firstSpecialTourInList).to.contain('$41');
         expect(firstSpecialTourInList).to.contain('4.5');
-        expect(firstSpecialTourInList).to.contain('special');
+        expect(firstSpecialTourInList).to.contain('SPECIAL');
     });
 
     it('filters tours that match multiple words in the search terms (non-case-sensitive)', () => {

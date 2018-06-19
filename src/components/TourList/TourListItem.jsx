@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 
 /*
@@ -8,11 +8,14 @@ const TourListItem = ({ tour }) => {
     const { title, currency, price, rating, isSpecialOffer } = tour;
 
     return (
-        <li data-qa="tour-list-item">
-            {title}
-            {currency}{price} - {rating}
-            {isSpecialOffer && 'special'}
-            <button type="button" onClick={openTourDetails}>Details</button>
+        <li data-qa="tour-list-item" className="TourList__tourListItem">
+            <span className="TourList__tourCopy">
+                <span dangerouslySetInnerHTML={{__html: title}} /> {/* Very dangerous! */}
+                <br />
+                {`${currency}${price} - ${rating} / 5`}
+                {isSpecialOffer && (<Fragment><br /><span>SPECIAL</span></Fragment>)}
+            </span>
+            <button type="button" onClick={openTourDetails} className="TourList__showDetails">Details</button>
         </li>
     );
 };
