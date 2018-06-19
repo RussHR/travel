@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 
 import mockData from './data/mockData';
+import sortModes from './constants/sortModes';
 
 import SearchCriteria from './components/SearchCriteria';
 import TourList from './components/TourList';
@@ -14,10 +15,12 @@ export default class GygAssessmentApp extends Component {
 
         this.state = {
             tours: [],
-            searchTerm: ''
+            searchTerm: '',
+            sortMode: sortModes.recommended
         };
 
         this.setSearchTerm = this.setSearchTerm.bind(this);
+        this.setSortMode = this.setSortMode.bind(this);
     }
 
     /*
@@ -25,18 +28,6 @@ export default class GygAssessmentApp extends Component {
      */
     componentDidMount() {
         this.fetchInitialData();
-    }
-
-    /*
-     * Sets the search term to filter by.
-     *
-     * @param {object} e - DOM event when text input is changed
-     * @param {object} e.currentTarget - input (search term) that the change occurs in
-     * @return {undefined}
-     */
-    setSearchTerm({ currentTarget }) {
-        const searchTerm = currentTarget.value;
-        this.setState(() => ({ searchTerm }));
     }
 
     /*
@@ -62,13 +53,37 @@ export default class GygAssessmentApp extends Component {
         });
     }
 
+    /*
+     * Sets the search term to filter by.
+     *
+     * @param {object} e - DOM event when text input is changed
+     * @param {object} e.currentTarget - input (search term) that the change occurs in
+     * @return {undefined}
+     */
+    setSearchTerm({ currentTarget }) {
+        const searchTerm = currentTarget.value;
+        this.setState(() => ({ searchTerm }));
+    }
+
+    /*
+     * Sets the sort mode when listing the tours.
+     *
+     * @param {object} e - DOM event when select is changed
+     * @param {object} e.currentTarget - select (sort mode) that the change occurs with
+     * @return {undefined}
+     */
+    setSortMode({ currentTarget }) {
+        const sortMode = currentTarget.value;
+        this.setState(() => ({ sortMode }));
+    }
+
     render() {
-        const { tours, searchTerm } = this.state;
+        const { tours, searchTerm, sortMode } = this.state;
 
         return (
             <main>
-                <SearchCriteria onChangeSearchTerm={this.setSearchTerm} />
-                <TourList tours={tours}searchTerm={searchTerm} />
+                <SearchCriteria onChangeSearchTerm={this.setSearchTerm} onChangeSortMode={this.setSortMode} />
+                <TourList tours={tours} searchTerm={searchTerm} sortMode={sortMode} />
             </main>
         );
     }

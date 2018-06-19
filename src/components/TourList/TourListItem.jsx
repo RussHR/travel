@@ -7,8 +7,7 @@ const TourListItem = ({ tour }) => {
     return (
         <li data-qa="tour-list-item">
             {title}
-            {currency}{price}
-            {rating}
+            {currency}{price} - {rating}
             {isSpecialOffer && 'special'}
             <button type="button">Details</button>
         </li>
