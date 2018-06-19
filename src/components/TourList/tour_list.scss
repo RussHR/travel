@@ -18,8 +18,27 @@
         background-color: $bg-color--tour-list-item-3;
     }
 }
+.TourList__tourListItem--special {
+    background: linear-gradient(63deg, $bg-color--tour-list-item-1 0%, $bg-color--tour-list-item-2 50%, $bg-color--tour-list-item-3 100%);
+    
+    &:nth-of-type(2n) {
+        background: linear-gradient(63deg, $bg-color--tour-list-item-2 0%, $bg-color--tour-list-item-3 50%, $bg-color--tour-list-item-1 100%);
+    }
+
+    &:nth-of-type(3n) {
+        background: linear-gradient(63deg, $bg-color--tour-list-item-3 0%, $bg-color--tour-list-item-1 50%, $bg-color--tour-list-item-2 100%);
+    }
+}
 .TourList__tourCopy {
     flex-grow: 1;
+    padding-right: $base-unit;
+}
+.TourList__tourName {
+    font-size: 1.25rem;
+    font-weight: 500;
+}
+.TourList__isSpecial {
+    font-size: 0.75rem;
 }
 .TourList__showDetails {
     height: $height--show-details;

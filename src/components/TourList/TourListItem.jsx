@@ -1,5 +1,6 @@
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
+import classNames from 'classnames';
 
 /*
  * React element for a tour in the list.
@@ -7,13 +8,21 @@ import PropTypes from 'prop-types';
 const TourListItem = ({ tour }) => {
     const { title, currency, price, rating, isSpecialOffer } = tour;
 
+    const tourListItemClassNames = classNames('TourList__tourListItem', {
+        'TourList__tourListItem--special': isSpecialOffer
+    });
+
     return (
-        <li data-qa="tour-list-item" className="TourList__tourListItem">
+        <li data-qa="tour-list-item" className={tourListItemClassNames}>
             <span className="TourList__tourCopy">
-                <span dangerouslySetInnerHTML={{__html: title}} /> {/* Very dangerous! */}
+                {/* Very dangerous! */}
+                <span
+                    className="TourList__tourName"
+                    dangerouslySetInnerHTML={{ __html: title }}
+                />
                 <br />
                 {`${currency}${price} - ${rating} / 5`}
-                {isSpecialOffer && (<Fragment><br /><span>SPECIAL</span></Fragment>)}
+                {isSpecialOffer && (<Fragment><br /><span className="TourList__isSpecial">SPECIAL</span></Fragment>)}
             </span>
             <button type="button" onClick={openTourDetails} className="TourList__showDetails">Details</button>
         </li>
