@@ -12,9 +12,18 @@ const TourListItem = ({ tour }) => {
             {title}
             {currency}{price} - {rating}
             {isSpecialOffer && 'special'}
-            <button type="button">Details</button>
+            <button type="button" onClick={openTourDetails}>Details</button>
         </li>
     );
+};
+
+/*
+ * Ideally opens a pane for the "tour details". At the moment, just opens GYG in a new tab.
+ *
+ * @return {undefined}
+ */
+const openTourDetails = () => {
+    window.open('https://www.getyourguide.com/');
 };
 
 TourListItem.propTypes = {
