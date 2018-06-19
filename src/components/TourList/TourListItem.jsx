@@ -1,6 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+/*
+ * React element for a tour in the list.
+ */
 const TourListItem = ({ tour }) => {
     const { title, currency, price, rating, isSpecialOffer } = tour;
 

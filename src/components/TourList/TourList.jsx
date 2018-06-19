@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { filter, orderBy, values } from 'lodash';
+import { values } from 'lodash';
 
 import sortModes from '../../constants/sortModes';
 import { filterAndSortTours } from '../../helpers/tours';

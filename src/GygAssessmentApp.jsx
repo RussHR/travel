@@ -5,6 +5,7 @@ import sortModes from './constants/sortModes';
 
 import SearchCriteria from './components/SearchCriteria';
 import TourList from './components/TourList';
+import ToursLoading from './components/ToursLoading';
 
 /**
  * Main app. Houses API logic.
@@ -16,7 +17,8 @@ export default class GygAssessmentApp extends Component {
         this.state = {
             tours: [],
             searchTerm: '',
-            sortMode: sortModes.recommended
+            sortMode: sortModes.recommended,
+            fetchingInitialData: true
         };
 
         this.setSearchTerm = this.setSearchTerm.bind(this);
@@ -46,7 +48,7 @@ export default class GygAssessmentApp extends Component {
                 return Promise.reject(new Error('"tours" not present in top level of data'));
             }
 
-            this.setState({ tours });
+            this.setState({ tours, fetchingInitialData: false });
 
         }).catch(() => {
             // handle error
@@ -78,6 +80,10 @@ export default class GygAssessmentApp extends Component {
     }
 
     render() {
+        if (this.state.fetchingInitialData) {
+            return <ToursLoading />;
+        }
+
         const { tours, searchTerm, sortMode } = this.state;
 
         return (
