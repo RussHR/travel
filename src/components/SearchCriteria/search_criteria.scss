@@ -1,0 +1,15 @@
+@import '../../style/variables';
+
+.SearchCriteria {
+    padding: $base-unit $base-unit 0;
+}
+.SearchCriteria__searchTerm {
+    margin-bottom: $base-unit;
+    border: 1px solid $color--generic;
+    border-radius: $base-unit * 2;
+}
+.SearchCriteria__sortMode {
+    border: 1px solid $color--generic;
+    border-radius: $base-unit * 2;
+    background: none;
+}

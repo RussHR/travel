@@ -3,16 +3,31 @@ import PropTypes from 'prop-types';
 
 import sortModes from '../../constants/sortModes';
 
+import './search_criteria.scss';
+
 /*
  * Includes the input for search.
  */
 const SearchCriteria = ({ onChangeSearchTerm, onChangeSortMode }) => {
     return (
-        <section>
+        <section className="SearchCriteria">
             <label htmlFor="search-term">Search: </label>
-            <input id="search-term" type="text" onChange={onChangeSearchTerm} data-qa="search-criteria-search-term" />
+            <input
+                id="search-term"
+                type="text"
+                onChange={onChangeSearchTerm}
+                data-qa="search-criteria-search-term"
+                className="SearchCriteria__searchTerm"
+            />
+            <br />
             <label htmlFor="sort-mode">Sort by: </label>
-            <select id="sort-mode" name="sort-mode" data-qa="search-criteria-sort-mode" onChange={onChangeSortMode}>
+            <select
+                id="sort-mode"
+                name="sort-mode"
+                data-qa="search-criteria-sort-mode"
+                onChange={onChangeSortMode}
+                className="SearchCriteria__sortMode"
+            >
                 <option value={sortModes.recommended}>Recommended</option>
                 <option value={sortModes.priceAscending}>Price - Lowest</option>
                 <option value={sortModes.priceDescending}>Price - Highest</option>
