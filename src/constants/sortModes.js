@@ -1,5 +1,7 @@
 export default {
     recommended: 'recommended',
     priceAscending: 'priceAscending',
-    priceDescending: 'priceDescending'
+    priceDescending: 'priceDescending',
+    ratingAscending: 'ratingAscending',
+    ratingDescending: 'ratingDescending'
 };

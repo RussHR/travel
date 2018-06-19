@@ -32,6 +32,9 @@ const TourList = ({ tours, searchTerm, sortMode }) => {
     if (sortMode === sortModes.priceAscending || sortMode === sortModes.priceDescending) {
         iteratees.push(tour => parseInt(tour.price, 10));
         orders.push(sortMode === sortModes.priceAscending ? 'asc' : 'desc');
+    } else if (sortMode === sortModes.ratingAscending || sortMode === sortModes.ratingDescending) {
+        iteratees.push(tour => parseFloat(tour.rating));
+        orders.push(sortMode === sortModes.ratingAscending ? 'asc' : 'desc');
     }
 
     const sortedTours = orderBy(filteredTours, iteratees, orders);

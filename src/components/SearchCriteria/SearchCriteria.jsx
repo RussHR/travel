@@ -14,8 +14,10 @@ const SearchCriteria = ({ onChangeSearchTerm, onChangeSortMode }) => {
             <label htmlFor="sort-mode">Sort by: </label>
             <select id="sort-mode" name="sort-mode" data-qa="search-criteria-sort-mode" onChange={onChangeSortMode}>
                 <option value={sortModes.recommended}>Recommended</option>
-                <option value={sortModes.priceAscending}>Price - Ascending</option>
-                <option value={sortModes.priceDescending}>Price - Descending</option>
+                <option value={sortModes.priceAscending}>Price - Lowest</option>
+                <option value={sortModes.priceDescending}>Price - Highest</option>
+                <option value={sortModes.ratingAscending}>Rating - Lowest</option>
+                <option value={sortModes.ratingDescending}>Rating - Highest</option>
             </select>
         </section>
     );

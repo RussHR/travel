@@ -84,4 +84,48 @@ describe('<TourList />', () => {
         const secondNonSpecialTourInList = tourListItems.eq(4).text();
         expect(secondNonSpecialTourInList).to.contain('$143');
     });
+
+    it('sorts tours in ascending rating, listing specials first', () => {
+        const mockProps = merge({}, props, { sortMode: sortModes.ratingAscending });
+        const wrapper = render(<TourList {...mockProps} />);
+        const tourListItems = wrapper.find('[data-qa="tour-list-item"]');
+
+        // check that the first two tours are in ascending rating
+        const firstSpecialTourInList = tourListItems.first().text();
+        const secondSpecialTourInList = tourListItems.eq(1).text();
+        expect(firstSpecialTourInList).to.contain('4.5');
+        expect(secondSpecialTourInList).to.contain('4.6');
+
+        // check that the last special tour is in front of the first non-special tour
+        const lastSpecialTourInList = tourListItems.eq(2).text();
+        const firstNonSpecialTourInList = tourListItems.eq(3).text();
+        expect(lastSpecialTourInList).to.contain('4.9');
+        expect(firstNonSpecialTourInList).to.contain('4.3');
+
+        // check that the last non-special tour has a higher rating the first non-special one
+        const lastNonSpecialTourInList = tourListItems.last().text();
+        expect(lastNonSpecialTourInList).to.contain('4.8');
+    });
+
+    it('sorts tours in descending rating, listing specials first', () => {
+        const mockProps = merge({}, props, { sortMode: sortModes.ratingDescending });
+        const wrapper = render(<TourList {...mockProps} />);
+        const tourListItems = wrapper.find('[data-qa="tour-list-item"]');
+
+        // check that the first two tours are in descending rating
+        const firstSpecialTourInList = tourListItems.first().text();
+        const secondSpecialTourInList = tourListItems.eq(1).text();
+        expect(firstSpecialTourInList).to.contain('4.9');
+        expect(secondSpecialTourInList).to.contain('4.6');
+
+        // check that the last special tour is in front of the first non-special tour
+        const lastSpecialTourInList = tourListItems.eq(2).text();
+        const firstNonSpecialTourInList = tourListItems.eq(3).text();
+        expect(lastSpecialTourInList).to.contain('4.5');
+        expect(firstNonSpecialTourInList).to.contain('4.8');
+
+        // check that the last non-special tour has a higher rating the first non-special one
+        const lastNonSpecialTourInList = tourListItems.last().text();
+        expect(lastNonSpecialTourInList).to.contain('4.3');
+    });
 });
