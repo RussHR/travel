@@ -1,5 +1,11 @@
 @import '../../style/variables';
 
+.TourList__noResults {
+    display: inline-block;
+    width: 100%;
+    padding-top: $base-unit;
+    text-align: center;
+}
 .TourList__list {
     padding: 0;
     list-style: none;

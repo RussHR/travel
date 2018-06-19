@@ -40,6 +40,7 @@ Running `npm run build` will create a `dist/` directory with an `index.html`, `b
 * [Enzyme](https://github.com/airbnb/enzyme) - React tests!
 * [ESLint](https://eslint.org/) - for linting!
 * [sinon](http://sinonjs.org/) - for testing with spies and watchers!
+* [classnames](https://github.com/JedWatson/classnames) - for easy html class management!
 
 
 ## Things I would do with more time:

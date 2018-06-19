@@ -20,7 +20,9 @@ const TourList = ({ tours, searchTerm, sortMode }) => {
     let tourListContents;
 
     if (sortedTours.length === 0) {
-        tourListContents = <span>Sorry, there are no tours matching your search!</span>;
+        tourListContents = (
+            <span className="TourList__noResults">Sorry, there are no tours matching your search!</span>
+        );
     } else {
         tourListContents = (
             <ul className="TourList__list">
