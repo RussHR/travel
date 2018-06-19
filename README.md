@@ -42,9 +42,27 @@ Running `npm run build` will create a `dist/` directory with an `index.html`, `b
 * [sinon](http://sinonjs.org/) - for testing with spies and watchers!
 * [classnames](https://github.com/JedWatson/classnames) - for easy html class management!
 
+## Architectural Decisions:
+
+I went with React because it makes UI management easy, and its virtual DOM makes it more efficient than re-rendering html regardless of whether there may actually be a difference in the UI. In this case, `GygAssessmentApp.jsx` acts as the nucleus of the app with its state as the app store, and it takes care of the initial, fake "API call". Generally, without Redux, I try to house all my API calls in the same place, and that place is usually at the top of the app.
+
+#### So why not Redux?
+
+Redux is great, but it introduces a lot of overhead and complexity. In this particular case, I decided not to use it due to the app being so small. It does, however, make it easier to test API calls and asynchronous actions.
+
+## Feature Decisions:
+
+Honestly, I didn't add very many! This was very time-consuming unto itself. With sorting, I imagined the tours that were specials might be sponsored, so I decided to always show them at the top of the list.
+
 
 ## Things I would do with more time:
 
+* Style this a bit more, it was added near the end pretty hastily.
+* Have the Details buttons open a separate pane within the app for more details about the tour.
+* Add more filters, e.g. see tours only with a certain rating.
+* Better ensure acccessibility.
+* Update this project's version of webpack. I do not recommend this version for anything in production, especially due to security vulnerabilities of npm packages installed.
+* Try to understand the data.json's tour titles better. Some are a bit strange.
 * Sleep! Exercise! Eat well.
 
 
