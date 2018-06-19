@@ -128,4 +128,11 @@ describe('<TourList />', () => {
         const lastNonSpecialTourInList = tourListItems.last().text();
         expect(lastNonSpecialTourInList).to.contain('4.3');
     });
+
+    it('tells the user when there are no terms matching the search term', () => {
+        const mockProps = merge({}, props, { searchTerm: 'abcdefg' });
+        const wrapper = render(<TourList {...mockProps} />);
+        expect(wrapper.text()).to.contain('Sorry, there are no tours matching your search!');
+    });
+
 });

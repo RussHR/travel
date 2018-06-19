@@ -15,11 +15,21 @@ const TourList = ({ tours, searchTerm, sortMode }) => {
 
     const sortedTours = filterAndSortTours({ tours, searchTerm, sortMode });
 
-    return (
-        <section>
+    let tourListContents;
+
+    if (sortedTours.length === 0) {
+        tourListContents = <span>Sorry, there are no tours matching your search!</span>;
+    } else {
+        tourListContents = (
             <ul>
                 {sortedTours.map((tour) => <TourListItem tour={tour} key={tour.title} />)}
             </ul>
+        );
+    }
+
+    return (
+        <section>
+            {tourListContents}
         </section>
     );
 };
