@@ -1,4 +1,4 @@
-# GetYourGuide Assessment
+# Travel Assessment
 
 ## Getting Started
 
